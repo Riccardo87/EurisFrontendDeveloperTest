@@ -1,0 +1,36 @@
+<div *ngFor="let store of stores">
+  <nav class="nav_products">
+    <section>
+      <div class="example-button-row">
+        <button
+          mat-flat-button
+          type="button"
+          color="primary"
+          aria-label="products"
+          class="cookie"
+          (click)="pageGetAllProducts(store.id)"
+        >
+          <!-- [clickPage]="pageGetAllProducts(store.id)" -->
+
+          <mat-icon>cookie</mat-icon> PRODUCTS
+        </button>
+      </div>
+    </section>
+  </nav>
+
+  <main>
+    <div class="cards_material">
+      <mat-card class="card_material">
+        <mat-card-title>
+          Title:
+          {{ store.data.name }}
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <p><b>Category:</b> {{ store.data.category }}</p>
+          <p><b>Employees:</b> {{ store.data.employees }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </main>
+</div>

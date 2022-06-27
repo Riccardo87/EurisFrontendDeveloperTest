@@ -1,0 +1,92 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  margin-top: 2rem;
+
+  .example-button-row {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      margin: 1rem;
+    }
+  }
+}
+.nav_products {
+  justify-content: flex-start;
+  .back,
+  .view,
+  .timeline {
+    margin-right: 1rem;
+  }
+}
+
+mat-list,
+.dialog-product,
+.card_material {
+  background-color: #b5c1c8;
+}
+
+mat-list {
+  margin: 2rem;
+
+  .mat-list-item {
+    border-bottom: 1px solid #9aa4aa;
+
+    .product-list {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      padding: 1rem;
+      align-items: center;
+
+      .product-item {
+        width: 7rem;
+        display: flex;
+        align-items: center;
+        p {
+          margin: 0px;
+        }
+
+        .example-button-row {
+          display: flex;
+          flex-direction: row;
+
+          button {
+            margin: 1rem;
+          }
+        }
+      }
+    }
+    // ::ng-deep .mat-list-item-content {
+    //   justify-content: space-around;
+    // }
+  }
+}
+
+.cards_material {
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .card_material {
+    max-width: 400px;
+    margin: 2em 2em;
+    width: 20rem;
+
+    mat-card-content {
+      margin-top: 2em;
+    }
+
+    .example-button-row {
+      display: flex;
+      flex-direction: row;
+
+      button {
+        margin: 1rem;
+      }
+    }
+  }
+}

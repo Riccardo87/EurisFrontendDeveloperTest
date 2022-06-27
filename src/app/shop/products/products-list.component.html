@@ -1,0 +1,163 @@
+<nav class="nav_products">
+  <section>
+    <div class="example-button-row">
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="Back"
+        class="back"
+        (click)="backPage()"
+      >
+        <mat-icon>arrow_back_ios</mat-icon> BACK
+      </button>
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="View"
+        class="view"
+        (click)="statusLayout = !statusLayout"
+      >
+        <mat-icon *ngIf="!statusLayout">view_module</mat-icon>
+        <mat-icon *ngIf="statusLayout">view_stream</mat-icon> PRODUCTS
+      </button>
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="Create Product"
+        class="create"
+        (click)="pagePostProduct(idStore)"
+      >
+        <mat-icon>create</mat-icon> CREATE PRODUCT
+      </button>
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="Chart"
+        class="timeline"
+        (click)="pageGetChart(idStore)"
+      >
+        <mat-icon>timeline</mat-icon> CHART
+      </button>
+    </div>
+  </section>
+</nav>
+
+<div *ngIf="statusLayout">
+  <mat-list>
+    <mat-list-item *ngFor="let product of products">
+      <div class="product-list">
+        <div class="product-item">
+          <p>{{ product.data.title }}</p>
+        </div>
+        <div class="product-item">
+          <p>{{ product.data.category }}</p>
+        </div>
+        <div class="product-item">
+          <p>
+            {{ product.data.description }}
+          </p>
+        </div>
+        <div class="product-item">
+          <p>
+            {{ product.data.employee }}
+          </p>
+        </div>
+        <div class="product-item">
+          <p>
+            {{ product.data.price | currency: "EUR":true }}
+          </p>
+        </div>
+        <div class="product-item">
+          <mat-label> Reviews</mat-label>
+          <mat-select>
+            <mat-option>
+              {{ product.data.reviews }}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class="example-button-row">
+          <button
+            mat-flat-button
+            color="primary"
+            aria-label="visibility product"
+            class="visibility_product"
+            (click)="pageGetProduct(idStore, product.id)"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            mat-flat-button
+            color="warn"
+            aria-label="delete product"
+            class="delete_product"
+            (click)="openDialog(dialogProduct, product.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div *ngIf="!statusLayout">
+  <div class="cards_material">
+    <mat-card class="card_material" *ngFor="let product of products">
+      <mat-card-title>
+        Title:
+        {{ product.data.title }}
+      </mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <p><b>Category:</b> {{ product.data.category }}</p>
+        <p><b>Description:</b> {{ product.data.description }}</p>
+        <p><b>Employees:</b> {{ product.data.employee }}</p>
+        <p><b>Price:</b> {{ product.data.price | currency: "EUR":true }}</p>
+        <p><b>Reviews:</b> {{ product.data.reviews }}</p>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <div class="example-button-row">
+          <button
+            mat-flat-button
+            color="primary"
+            aria-label="visibility product"
+            class="visibility_product"
+            (click)="pageGetProduct(idStore, product.id)"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            mat-flat-button
+            color="warn"
+            aria-label="delete product"
+            class="delete_product"
+            (click)="openDialog(dialogProduct, product.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #dialogProduct let-data>
+  <h1 mat-dialog-title>Delete file</h1>
+  <div mat-dialog-content>Would you like to delete product?</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>No</button>
+    <button
+      mat-button
+      mat-dialog-close
+      cdkFocusInitial
+      (click)="deleteProduct(idStore, data.product)"
+    >
+      Ok
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,32 @@
+.container_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+
+  h1,
+  mat-icon {
+    color: white;
+    margin-bottom: 0px;
+  }
+
+  button {
+    background-color: #212121;
+    border: none;
+    mat-icon {
+      animation: slide1 1s ease-in-out infinite;
+      margin-left: 9px;
+    }
+  }
+
+  @keyframes slide1 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(10px, 0);
+    }
+  }
+}

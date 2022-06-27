@@ -1,0 +1,32 @@
+<nav class="nav_products">
+  <div class="example-button-row">
+    <button
+      mat-flat-button
+      type="button"
+      color="primary"
+      aria-label="Back"
+      class="back"
+      (click)="backPage()"
+    >
+      <mat-icon>arrow_back_ios</mat-icon> BACK
+    </button>
+  </div>
+</nav>
+<main>
+  <div class="cards_material">
+    <mat-card class="card_material" *ngIf="product">
+      <mat-card-title>
+        Title:
+        {{ product.title }}
+      </mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <p><b>Category:</b> {{ product.category }}</p>
+        <p><b>Description:</b> {{ product.description }}</p>
+        <p><b>Employees:</b> {{ product.employee }}</p>
+        <p><b>Price:</b> {{ product.price | currency: "EUR":true }}</p>
+        <p><b>Reviews:</b> {{ product.reviews }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</main>
