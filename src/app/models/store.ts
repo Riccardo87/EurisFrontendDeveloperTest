@@ -3,3 +3,8 @@ export interface Store {
   category: string;
   employees: string[];
 }
+export interface ApiStore {
+  id: string;
+  data: Store;
+  category: string;
+}

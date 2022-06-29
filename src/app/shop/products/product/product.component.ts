@@ -1,5 +1,5 @@
-import { Product } from './../../models/product';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Product } from './../../../models/product';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/core/data.service';
 import { Location } from '@angular/common';

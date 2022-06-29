@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-title>
+    Title:
+    {{ product.title }}
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <p><b>Category:</b> {{ product.category }}</p>
+    <p><b>Description:</b> {{ product.description }}</p>
+    <p><b>Employees:</b> {{ product.employee }}</p>
+    <p><b>Price:</b> {{ product.price | currency: "EUR":true }}</p>
+    <p><b>Reviews:</b> {{ product.reviews }}</p>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <div class="mat-product-card-button">
+      <button
+        mat-flat-button
+        color="primary"
+        aria-label="visibility product"
+        class="visibility_product"
+        (click)="detail.emit()"
+      >
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <button
+        mat-flat-button
+        color="warn"
+        aria-label="delete product"
+        class="delete_product"
+        (click)="delete.emit()"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

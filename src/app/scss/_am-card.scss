@@ -1,0 +1,27 @@
+mat-card {
+  &.mat-card {
+    background-color: #b5c1c8;
+    margin: 2rem;
+    width: 10rem;
+    width: 20rem;
+    border-radius: 0.5rem;
+  }
+
+  mat-divider {
+    &.mat-divider.mat-divider-horizontal {
+      background-color: #212121;
+      position: relative;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .mat-product-card-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+}

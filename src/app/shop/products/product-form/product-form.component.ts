@@ -1,7 +1,7 @@
-import { Product } from './../../models/product';
+import { Product } from './../../../models/product';
 import { DataService } from 'src/app/core/data.service';
 import { Location } from '@angular/common';
-import { Component, ErrorHandler, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 

@@ -1,10 +1,10 @@
 import { StatsCategories } from './../models/stats-categories';
-import { Product } from './../models/product';
-import { Store } from './../models/store';
+import { ApiProduct, Product } from './../models/product';
+import { ApiStore, Store } from './../models/store';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 const basePath = 'http://us-central1-test-b7665.cloudfunctions.net/api';
 
@@ -20,9 +20,9 @@ export class DataService {
     }),
   };
 
-  getAllStores(): Observable<Store[]> {
+  getAllStores(): Observable<ApiStore[]> {
     return this.http
-      .get<Store[]>(`${basePath}/stores`)
+      .get<ApiStore[]>(`${basePath}/stores`)
       .pipe(catchError(this.httpError));
   }
 
@@ -32,9 +32,9 @@ export class DataService {
       .pipe(catchError(this.httpError));
   }
 
-  getAllProducts(idStore: string): Observable<Product[]> {
+  getAllProducts(idStore: string): Observable<ApiProduct[]> {
     return this.http
-      .get<Product[]>(`${basePath}/stores/${idStore}/products`)
+      .get<ApiProduct[]>(`${basePath}/stores/${idStore}/products`)
       .pipe(catchError(this.httpError));
   }
 

@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/styles/shared.style.scss";
+@import "./app/scss/am-card";
+@import "./app/scss/_am-dialog.scss";
+@import "./app/scss/am-expansionPanel";
 
 html,
 body {

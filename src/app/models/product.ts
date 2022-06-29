@@ -6,3 +6,7 @@ export interface Product {
   description: string;
   reviews: string[];
 }
+export interface ApiProduct {
+  id: string;
+  data: Product;
+}

@@ -1,27 +1,28 @@
-<div>
-  <nav>
-    <section>
-      <div class="example-button-row">
-        <button
-          mat-flat-button
-          type="button"
-          color="primary"
-          aria-label="Home"
-          routerLink="/home"
-        >
-          <mat-icon>home</mat-icon> HOME
-        </button>
-        <button
-          mat-flat-button
-          type="button"
-          color="primary"
-          aria-label="Shop"
-          routerLink="/stores"
-        >
-          <mat-icon>store</mat-icon> STORE
-        </button>
-      </div>
-    </section>
-  </nav>
-  <router-outlet></router-outlet>
-</div>
+<nav class="mat-nav">
+  <section>
+    <div class="mat-nav-button">
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="Home"
+        routerLink="/home"
+      >
+        <mat-icon>home</mat-icon> HOME
+      </button>
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="Shop"
+        routerLink="/stores"
+      >
+        <mat-icon>store</mat-icon> STORE
+      </button>
+    </div>
+  </section>
+</nav>
+
+<mat-divider></mat-divider>
+
+<router-outlet></router-outlet>

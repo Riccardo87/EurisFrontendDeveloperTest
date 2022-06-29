@@ -1,22 +1,27 @@
-<nav class="nav_products">
-  <div class="example-button-row">
-    <button
-      mat-flat-button
-      type="button"
-      color="primary"
-      aria-label="Back"
-      class="back"
-      (click)="backPage()"
-    >
-      <mat-icon>arrow_back_ios</mat-icon> BACK
-    </button>
-  </div>
+<nav class="mat-nav">
+  <section>
+    <div class="mat-nav-button">
+      <button
+        mat-flat-button
+        type="button"
+        color="primary"
+        aria-label="Back"
+        class="back"
+        (click)="backPage()"
+      >
+        <mat-icon>arrow_back_ios</mat-icon> BACK
+      </button>
+    </div>
+  </section>
 </nav>
 
-<div *ngIf="errorMessage">
+<mat-divider></mat-divider>
+
+<div class="mat-chart" *ngIf="errorMessage">
   {{ errorMessage }}
   <button mat-icon-button aria-label="error code" (click)="reloadPage(idStore)">
     <mat-icon>cached</mat-icon>
   </button>
 </div>
-<canvas baseChart [data]="chartData" [type]="'polarArea'"> </canvas>
+<canvas class="mat-chart" baseChart [data]="chartData" [type]="'polarArea'">
+</canvas>

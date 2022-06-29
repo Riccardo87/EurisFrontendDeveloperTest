@@ -1,6 +1,6 @@
 import { DataService } from './../core/data.service';
 import { Product } from './../models/product';
-import { Store } from './../models/store';
+import { ApiStore } from './../models/store';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  stores: Store[];
+  stores: ApiStore[];
   products: Product[];
 
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.dataService.getAllStores().subscribe(
-      (respose: any) => {
+      (respose) => {
         (this.stores = respose), console.log(respose);
       },
       (err: any) => console.log(err)

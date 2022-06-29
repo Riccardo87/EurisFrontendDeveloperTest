@@ -1,9 +1,9 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DataService } from 'src/app/core/data.service';
-import { Product } from 'src/app/models/product';
+import { ApiProduct, Product } from 'src/app/models/product';
 import { Location } from '@angular/common';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-products',
@@ -11,8 +11,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit {
-  products: Product[];
   product: Product;
+  products: ApiProduct[];
   idStore: string;
   statusLayout: boolean = true;
 
@@ -31,7 +31,7 @@ export class ProductsListComponent implements OnInit {
 
   getAllProducts(idStore) {
     this.dataService.getAllProducts(idStore).subscribe(
-      (respose: any) => {
+      (respose) => {
         (this.products = respose), console.log(respose);
       },
       (err: any) => console.log(err)
@@ -40,7 +40,7 @@ export class ProductsListComponent implements OnInit {
 
   deleteProduct(idStore, idProduct) {
     this.dataService.deleteProduct(idStore, idProduct).subscribe(
-      (respose: any) => {
+      (respose) => {
         this.product = respose;
         console.log(respose);
         this.ngOnInit();

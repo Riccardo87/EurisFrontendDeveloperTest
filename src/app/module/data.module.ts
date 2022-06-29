@@ -1,5 +1,5 @@
-import { ProductFormComponent } from './../shop/products/product-form.component';
-import { ProductComponent } from './../shop/products/product.component';
+import { ProductFormComponent } from './../shop/products/product-form/product-form.component';
+import { ProductComponent } from './../shop/products/product/product.component';
 import { ShopComponent } from '../shop/shop.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,8 @@ import { ProductsListComponent } from '../shop/products/products-list.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartComponent } from '../shop/chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { ProductsListItemComponent } from '../components/products-list-item/products-list-item.component';
+import { ProductsCardItemComponent } from '../components/products-card-item/products-card-item.component';
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
     ProductComponent,
     ProductFormComponent,
     ChartComponent,
+    ProductsListItemComponent,
+    ProductsCardItemComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +41,8 @@ const routes: Routes = [
     ProductComponent,
     ProductFormComponent,
     ChartComponent,
+    ProductsListItemComponent,
+    ProductsCardItemComponent,
   ],
 })
 export class DataModule {}

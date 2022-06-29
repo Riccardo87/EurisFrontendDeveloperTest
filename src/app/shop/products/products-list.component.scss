@@ -1,4 +1,14 @@
-@import "../../styles/shared.style.scss";
 table {
   width: 100%;
+}
+
+.mat-card-container {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mat-accordion-container {
+  margin: 2rem;
 }

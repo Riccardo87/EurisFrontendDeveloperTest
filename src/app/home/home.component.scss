@@ -1,21 +1,33 @@
-.container_flex {
+.page-home {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 10rem;
-
-  h1,
-  mat-icon {
-    color: white;
-    margin-bottom: 0px;
-  }
+  align-items: flex-start;
+  height: 100vh;
+  background-image: url("../Images/dolci..jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   button {
-    background-color: #212121;
+    margin-top: 1rem;
+    background-color: transparent;
+    background-repeat: no-repeat;
     border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+
+    h1,
     mat-icon {
+      color: #fff;
+    }
+
+    mat-icon {
+      margin-top: 0.2rem;
       animation: slide1 1s ease-in-out infinite;
-      margin-left: 9px;
+      margin-left: 0.5rem;
     }
   }
 
