@@ -5,33 +5,43 @@ import { ProductsListItemComponent } from './products-list-item.component';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { MatExpansionPanelHarness } from '@angular/material/expansion/testing';
 
-import {
-  MatAccordionHarness,
-  MatExpansionPanelHarness,
-} from '@angular/material/expansion/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ProductsListItemComponent', () => {
   let component: ProductsListItemComponent;
   let fixture: ComponentFixture<ProductsListItemComponent>;
   let loader: HarnessLoader;
+  let productJSON: Product;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async (done: DoneFn) => {
+    await TestBed.configureTestingModule({
       imports: [MatExpansionModule, NoopAnimationsModule],
       declarations: [ProductsListItemComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(ProductsListItemComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
+    loader = TestbedHarnessEnvironment.loader(fixture);
+    productJSON = {
+      title: 'torta al cioccolato',
+      category: 'torta',
+      description: 'fatta in casa',
+      employee: 'aldo',
+      price: 1,
+      reviews: ['succulenta', 'very good'],
+    };
+    component = fixture.componentInstance;
+    component.product = productJSON;
+    fixture.detectChanges();
+    done();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
   it('should be able to toggle expansion state of panel', async () => {
     const panel = await loader.getHarness(MatExpansionPanelHarness);
@@ -41,15 +51,20 @@ describe('ProductsListItemComponent', () => {
   });
 
   it('should hide review', async () => {
-    const productJSON: Product = {
-      title: 'torta',
-      category: 'torta al cioccolato',
-      description: 'Buonissima',
-      employee: 'aldo',
-      price: 1,
-      reviews: ['cioccolato', 'buono'],
-    };
+    fixture.detectChanges();
     const panel = await loader.getHarness(MatExpansionPanelHarness);
-    expect(await panel.getTextContent()).toBe('Review:' + productJSON.reviews);
+    expect(await panel.getTextContent()).toBe(`Review: succulenta, very good`);
+  });
+
+  it('should have <p> with "Title: torta al cioccolato"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const p = bannerElement.querySelector('p')!;
+    expect(p.textContent).toEqual(`Title: torta al cioccolato`);
+  });
+
+  it('should accept values', () => {
+    expect(productJSON.title).toEqual('torta al cioccolato');
+    expect(productJSON.category).toEqual('torta');
+    expect(productJSON.description).toEqual('fatta in casa');
   });
 });
