@@ -1,42 +1,32 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Product } from './../../models/product';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductsListItemComponent } from './products-list-item.component';
-
-import { HarnessLoader } from '@angular/cdk/testing';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatExpansionPanelHarness } from '@angular/material/expansion/testing';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+const productJSON: Product = {
+  title: 'torta al cioccolato',
+  category: 'torta',
+  description: 'fatta in casa',
+  employee: 'aldo',
+  price: 1,
+  reviews: ['succulenta', 'very good'],
+};
 describe('ProductsListItemComponent', () => {
   let component: ProductsListItemComponent;
   let fixture: ComponentFixture<ProductsListItemComponent>;
-  let loader: HarnessLoader;
-  let productJSON: Product;
-
-  beforeEach(async (done: DoneFn) => {
-    await TestBed.configureTestingModule({
+  beforeEach(async () => {
+    TestBed.configureTestingModule({
       imports: [MatExpansionModule, NoopAnimationsModule],
       declarations: [ProductsListItemComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
     fixture = TestBed.createComponent(ProductsListItemComponent);
-    fixture.detectChanges();
-    loader = TestbedHarnessEnvironment.loader(fixture);
-    productJSON = {
-      title: 'torta al cioccolato',
-      category: 'torta',
-      description: 'fatta in casa',
-      employee: 'aldo',
-      price: 1,
-      reviews: ['succulenta', 'very good'],
-    };
     component = fixture.componentInstance;
     component.product = productJSON;
     fixture.detectChanges();
-    done();
   });
 
   it('should create', () => {
@@ -44,6 +34,7 @@ describe('ProductsListItemComponent', () => {
   });
 
   it('should be able to toggle expansion state of panel', async () => {
+    const loader = TestbedHarnessEnvironment.loader(fixture);
     const panel = await loader.getHarness(MatExpansionPanelHarness);
     expect(await panel.isExpanded()).toBe(false);
     await panel.toggle();
@@ -51,9 +42,10 @@ describe('ProductsListItemComponent', () => {
   });
 
   it('should hide review', async () => {
+    const loader = TestbedHarnessEnvironment.loader(fixture);
     fixture.detectChanges();
     const panel = await loader.getHarness(MatExpansionPanelHarness);
-    expect(await panel.getTextContent()).toBe(`Review: succulenta, very good`);
+    expect(await panel.getTextContent()).toBe(`Review: succulenta,very good`);
   });
 
   it('should have <p> with "Title: torta al cioccolato"', () => {
