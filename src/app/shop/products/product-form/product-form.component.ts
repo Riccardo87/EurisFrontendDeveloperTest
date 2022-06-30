@@ -42,6 +42,7 @@ export class ProductFormComponent implements OnInit {
   ngOnInit(): void {}
 
   isValid(): boolean {
+    console.log('a');
     return this.productForm.valid;
     // return this.productForm.valid ? true : false;
     // if (this.productForm.valid) {

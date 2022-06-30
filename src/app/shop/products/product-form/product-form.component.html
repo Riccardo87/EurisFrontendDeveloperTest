@@ -19,11 +19,7 @@
 
 <main>
   <mat-card>
-    <form
-      [formGroup]="productForm"
-      class="example-form"
-      (ngSubmit)="addProduct()"
-    >
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
       <mat-card-title>
         <table class="example-full-width" cellspacing="0">
           <tr>
@@ -113,7 +109,7 @@
       <mat-card-actions>
         <button
           mat-flat-button
-          type="button"
+          type="submit"
           color="primary"
           aria-label="add product"
           class="add-product"
